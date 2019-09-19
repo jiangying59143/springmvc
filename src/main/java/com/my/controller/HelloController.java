@@ -1,8 +1,13 @@
 package com.my.controller;
 
 import com.my.domain.User;
+import com.my.domain.UserList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class HelloController {
@@ -48,6 +53,46 @@ public class HelloController {
     @RequestMapping(value = "redirect")
     public String redirect(){
         return "redirect:/test.jsp";
+    }
+
+    @RequestMapping("/int")
+    @ResponseBody
+    public String intTest(@RequestParam("id") int num){
+        return "num:"+num;
+    }
+
+    @RequestMapping("/int1")
+    @ResponseBody
+    public String intTest1(int num){
+        return "num:"+num;
+    }
+
+    @RequestMapping("/integer")
+    @ResponseBody
+    public String integerTest(Integer num){
+        return "num:"+num;
+    }
+
+    @RequestMapping("/array")
+    @ResponseBody
+    public String arrayTest(String[] name){
+        for (String str:name){
+            System.out.println(str);
+        }
+        return Arrays.asList(name).toString();
+    }
+
+    @RequestMapping("/list")
+    public ModelAndView listTest(UserList userList){
+        System.out.println(userList);
+        return new ModelAndView("show", "userList",  userList);
+    }
+
+    @RequestMapping("/json")
+    @ResponseBody
+    public Object json(@RequestBody User user){
+        System.out.println(user);
+        return user.toString();
     }
 
 }

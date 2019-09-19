@@ -16,5 +16,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
         <property name="prefix" value="/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+    
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4"></bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
 </beans>
