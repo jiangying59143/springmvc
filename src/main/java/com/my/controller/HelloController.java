@@ -40,4 +40,14 @@ public class HelloController {
         return "index";
     }
 
+    @RequestMapping(value = "forward")
+    public String forward(){
+        return "forward:/test.jsp";
+    }
+
+    @RequestMapping(value = "redirect")
+    public String redirect(){
+        return "redirect:/test.jsp";
+    }
+
 }
