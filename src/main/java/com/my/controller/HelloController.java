@@ -92,7 +92,7 @@ public class HelloController {
     @ResponseBody
     public Object json(@RequestBody User user){
         System.out.println(user);
-        return user.toString();
+        return user;
     }
 
 }

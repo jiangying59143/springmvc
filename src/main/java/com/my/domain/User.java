@@ -1,9 +1,13 @@
 package com.my.domain;
 
+import java.util.Date;
+
 public class User {
     private String name;
 
     private String password;
+
+    private Date birth;
 
     private Address address;
 
@@ -31,11 +35,20 @@ public class User {
         this.address = address;
     }
 
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", birth=" + birth +
                 ", address=" + address +
                 '}';
     }

@@ -16,11 +16,25 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
         <property name="prefix" value="/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
-    
+
     <mvc:annotation-driven>
-        <mvc:message-converters>
-            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4"></bean>
+        <mvc:message-converters register-defaults="true">
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"></bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <bean id="conversionService"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.my.converter.DateConverter">
+                    <constructor-arg type="java.lang.String" value="yyyy-MM-dd">
+                    </constructor-arg>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <mvc:annotation-driven conversion-service="conversionService">
+    </mvc:annotation-driven>
 </beans>

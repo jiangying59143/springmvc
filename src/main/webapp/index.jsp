@@ -21,7 +21,8 @@
                 contentType:"application/json;charset=UTF-8",
                 dataType : "text",
                 success: function(data){
-                    $("#title").text(data);
+                    var obj2 = JSON.parse(data);
+                    $("#title").text(obj2.address.name);
                 }
             })
         })
